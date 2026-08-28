@@ -71,20 +71,21 @@ section{
 #hero{min-height:100svh;justify-content:center;padding-top:40px;padding-bottom:56px}
 
 .badge{
-  position:relative;width:min(230px,58vw);margin-bottom:6px;
+  position:relative;width:min(230px,58vw);margin:64px auto 6px;
   animation:tilt 6s ease-in-out infinite;
 }
 @keyframes tilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(2deg)}}
 
 .callme{
   font-family:'Bungee',cursive;
-  font-size:clamp(26px,7vw,36px);
+  font-size:clamp(22px,6vw,32px);
   line-height:.92;color:var(--white);
   text-shadow:
     -2px 0 var(--ink),2px 0 var(--ink),0 -2px var(--ink),0 2px var(--ink),
     -3px 3px 0 var(--hot),0 7px 0 rgba(13,13,13,.85);
   transform:rotate(-7deg);
-  position:absolute;top:16px;left:14px;z-index:4;
+  position:absolute;bottom:100%;left:-6px;z-index:4;
+  margin-bottom:10px;white-space:nowrap;
 }
 
 .title-stack{position:relative;margin:6px 0 4px;width:100%}
@@ -96,16 +97,16 @@ section{
   text-shadow:0 6px 0 rgba(255,255,255,.5);
 }
 .mi-cumple{
-  position:absolute;left:50%;top:52%;
+  position:absolute;left:50%;top:63%;
   transform:translate(-50%,-50%) rotate(-2deg);
-  width:max-content;max-width:96vw;
+  width:max-content;max-width:92vw;
   font-family:'Yellowtail',cursive;
-  font-size:clamp(40px,11vw,72px);
+  font-size:clamp(30px,8vw,52px);
   color:var(--ink);
   background:var(--blush);
-  padding:.08em .42em .18em;
+  padding:.04em .34em .12em;
   border-radius:999px;
-  box-shadow:0 4px 0 rgba(214,0,110,.14);
+  box-shadow:0 3px 0 rgba(214,0,110,.14);
   white-space:nowrap;
 }
 .who{
@@ -443,6 +444,7 @@ section{
 
 </div>
 
+<audio id="mp3" src="musica.mp3" loop preload="none"></audio>
 <iframe id="yt" title="Música" allow="autoplay"></iframe>
 <button id="mbtn" aria-label="Reproducir música" aria-pressed="false">♪</button>
 
@@ -495,25 +497,40 @@ tick();
 })();
 
 /* ── música ── */
-var VIDEO = 'U3PUjIy6X_Q';
-var sonando = false;
-var mbtn = document.getElementById('mbtn'), yt = document.getElementById('yt');
+var VIDEO  = 'U3PUjIy6X_Q';  // se usa sólo si no existe musica.mp3
+var DESDE  = 0;               // segundo en que arranca el video (para saltear intros)
+
+var sonando = false, hayMp3 = false;
+var mbtn = document.getElementById('mbtn'),
+    yt   = document.getElementById('yt'),
+    mp3  = document.getElementById('mp3');
+
+// ¿existe musica.mp3?
+mp3.addEventListener('canplay', function(){ hayMp3 = true; });
+mp3.load();
+
+function pinta(on){
+  mbtn.textContent = on ? '❙❙' : '♪';
+  mbtn.classList.toggle('on', on);
+  mbtn.setAttribute('aria-label', on ? 'Pausar música' : 'Reproducir música');
+  mbtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+}
+
 mbtn.addEventListener('click', function(){
   sonando = !sonando;
   if(sonando){
-    yt.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO +
-             '?autoplay=1&loop=1&playlist=' + VIDEO + '&controls=0&rel=0&modestbranding=1';
-    mbtn.textContent = '❙❙';
-    mbtn.classList.add('on');
-    mbtn.setAttribute('aria-label','Pausar música');
-    mbtn.setAttribute('aria-pressed','true');
+    if(hayMp3 || mp3.readyState > 0){
+      mp3.play().catch(function(){});
+    } else {
+      yt.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO +
+               '?autoplay=1&loop=1&playlist=' + VIDEO +
+               '&start=' + DESDE + '&controls=0&rel=0&modestbranding=1';
+    }
   } else {
+    mp3.pause();
     yt.src = '';
-    mbtn.textContent = '♪';
-    mbtn.classList.remove('on');
-    mbtn.setAttribute('aria-label','Reproducir música');
-    mbtn.setAttribute('aria-pressed','false');
   }
+  pinta(sonando);
 });
 
 var obs = new IntersectionObserver(function(entries){
