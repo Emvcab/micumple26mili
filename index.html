@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Mi Cumpleaños 26 · Call Me</title>
+<meta name="theme-color" content="#FBDCE7">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Bodoni+Moda:opsz,wght@6..96,700;6..96,900&family=Bungee&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBDCE7;
+  --paper-deep:#F6C8DA;
+  --rule:#EFA8C4;
+  --hot:#FF1E8E;
+  --hot-deep:#D6006E;
+  --ink:#0D0D0D;
+  --blush:#FFF0F6;
+  --white:#FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Jost',system-ui,sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── hoja de cuaderno: renglones + margen ── */
+.paper{
+  position:relative;
+  background:
+    repeating-linear-gradient(180deg,transparent 0 37px,var(--rule) 37px 38px),
+    linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);
+}
+.paper::before{
+  content:'';position:absolute;top:0;bottom:0;left:34px;width:2px;
+  background:var(--hot);opacity:.35;z-index:1;
+}
+@media(max-width:520px){ .paper::before{left:20px} }
+
+.deco{position:absolute;pointer-events:none;z-index:2;user-select:none}
+.spark{color:var(--ink);opacity:.55}
+
+section{
+  position:relative;z-index:3;
+  padding:74px 26px;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+}
+@media(max-width:520px){ section{padding:58px 20px} }
+
+.eyebrow{
+  font-weight:500;font-size:11px;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--hot-deep);margin-bottom:14px;
+}
+.h-sec{
+  font-family:'Yellowtail',cursive;
+  font-size:clamp(38px,9vw,58px);
+  line-height:1.1;margin-bottom:8px;
+}
+.h-sec .hl{
+  background:linear-gradient(180deg,transparent 58%,var(--blush) 58%);
+  padding:0 .12em;
+}
+
+/* ══════════ PORTADA ══════════ */
+#hero{min-height:100svh;justify-content:center;padding-top:40px;padding-bottom:56px}
+
+.badge{
+  position:relative;width:min(230px,58vw);margin-bottom:6px;
+  animation:tilt 6s ease-in-out infinite;
+}
+@keyframes tilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(2deg)}}
+
+.callme{
+  font-family:'Bungee',cursive;
+  font-size:clamp(26px,7vw,36px);
+  line-height:.92;color:var(--white);
+  text-shadow:
+    -2px 0 var(--ink),2px 0 var(--ink),0 -2px var(--ink),0 2px var(--ink),
+    -3px 3px 0 var(--hot),0 7px 0 rgba(13,13,13,.85);
+  transform:rotate(-7deg);
+  position:absolute;top:16px;left:14px;z-index:4;
+}
+
+.title-stack{position:relative;margin:6px 0 4px;width:100%}
+.num26{
+  font-family:'Bodoni Moda',serif;font-weight:900;
+  font-size:clamp(150px,42vw,250px);
+  line-height:.82;color:var(--hot);
+  letter-spacing:-.02em;
+  text-shadow:0 6px 0 rgba(255,255,255,.5);
+}
+.mi-cumple{
+  position:absolute;left:50%;top:52%;
+  transform:translate(-50%,-50%) rotate(-2deg);
+  width:max-content;max-width:96vw;
+  font-family:'Yellowtail',cursive;
+  font-size:clamp(40px,11vw,72px);
+  color:var(--ink);
+  background:var(--blush);
+  padding:.08em .42em .18em;
+  border-radius:999px;
+  box-shadow:0 4px 0 rgba(214,0,110,.14);
+  white-space:nowrap;
+}
+.who{
+  font-family:'Yellowtail',cursive;
+  font-size:clamp(30px,8vw,46px);
+  color:var(--hot-deep);margin-top:16px;
+}
+.hero-when{
+  font-size:13px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--ink);opacity:.7;margin-top:14px;
+}
+
+/* ══════════ CUENTA REGRESIVA ══════════ */
+.count{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.cbox{
+  background:var(--white);
+  border:2.5px solid var(--ink);
+  border-radius:16px;
+  padding:14px 10px 10px;
+  min-width:74px;
+  box-shadow:4px 5px 0 var(--ink);
+}
+.cnum{
+  font-family:'Bodoni Moda',serif;font-weight:900;
+  font-size:clamp(28px,8vw,38px);line-height:1;color:var(--hot);
+  font-variant-numeric:tabular-nums;
+}
+.clab{
+  font-size:9px;letter-spacing:.24em;text-transform:uppercase;
+  margin-top:6px;color:var(--ink);opacity:.65;font-weight:500;
+}
+
+/* ══════════ TARJETAS ══════════ */
+.card{
+  background:var(--white);
+  border:2.5px solid var(--ink);
+  border-radius:22px;
+  box-shadow:6px 7px 0 var(--ink);
+  padding:28px 24px;
+  width:100%;max-width:380px;
+  margin-top:22px;
+}
+.card-ico{font-size:26px;margin-bottom:8px;display:block}
+.card-lab{
+  font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--hot-deep);font-weight:600;margin-bottom:10px;
+}
+.card-val{
+  font-family:'Yellowtail',cursive;
+  font-size:clamp(26px,6.5vw,34px);line-height:1.25;color:var(--ink);
+}
+.card-note{font-size:13px;line-height:1.6;color:var(--ink);opacity:.72;margin-top:8px}
+
+.swatch{
+  width:52px;height:52px;border-radius:50%;
+  background:radial-gradient(circle at 34% 30%,#FF8FC4,var(--hot) 62%,var(--hot-deep));
+  border:2.5px solid var(--ink);
+  box-shadow:3px 4px 0 var(--ink);
+  margin:0 auto 14px;
+}
+
+/* ══════════ MAPA ══════════ */
+.map-frame{
+  width:100%;max-width:380px;margin-top:20px;
+  border:2.5px solid var(--ink);border-radius:22px;
+  box-shadow:6px 7px 0 var(--ink);
+  overflow:hidden;background:var(--white);line-height:0;
+}
+.map-frame iframe{width:100%;height:230px;border:0;display:block;filter:saturate(.8)}
+
+/* ══════════ BOTONES ══════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  font-family:'Jost',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  padding:16px 26px;min-height:52px;width:100%;max-width:380px;
+  border:2.5px solid var(--ink);border-radius:999px;
+  background:var(--white);color:var(--ink);
+  box-shadow:4px 5px 0 var(--ink);
+  cursor:pointer;text-decoration:none;
+  transition:transform .12s ease,box-shadow .12s ease;
+  margin-top:16px;
+}
+.btn:active{transform:translate(4px,5px);box-shadow:0 0 0 var(--ink)}
+.btn:focus-visible{outline:3px solid var(--hot-deep);outline-offset:3px}
+
+/* ══════════ LLAMADA (elemento firma) ══════════ */
+#llamada{padding-top:80px}
+.phone{
+  width:100%;max-width:320px;margin-top:24px;
+  background:var(--ink);
+  border-radius:34px;
+  padding:26px 20px 22px;
+  box-shadow:7px 8px 0 var(--hot-deep);
+  position:relative;overflow:hidden;
+}
+.phone::after{
+  content:'';position:absolute;top:12px;left:50%;transform:translateX(-50%);
+  width:64px;height:5px;border-radius:99px;background:rgba(255,255,255,.22);
+}
+.ring-lab{
+  font-size:10px;letter-spacing:.36em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);margin-top:8px;
+}
+.ring-name{
+  font-family:'Yellowtail',cursive;font-size:34px;color:var(--white);
+  margin:8px 0 4px;
+}
+.ring-sub{font-size:12px;color:rgba(255,255,255,.5);letter-spacing:.1em;margin-bottom:22px}
+.avatar{
+  width:82px;height:82px;border-radius:50%;margin:14px auto 0;
+  background:var(--hot);border:3px solid var(--white);
+  display:flex;align-items:center;justify-content:center;
+  animation:pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,30,142,.6)}
+  70%{box-shadow:0 0 0 18px rgba(255,30,142,0)}
+}
+.answer{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;padding:15px;min-height:52px;
+  border:0;border-radius:999px;
+  background:#22C55E;color:var(--white);
+  font-family:'Jost',sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;cursor:pointer;
+  animation:shake 2.4s ease-in-out infinite;
+}
+@keyframes shake{0%,86%,100%{transform:translateX(0)}90%{transform:translateX(-4px)}94%{transform:translateX(4px)}}
+.answer:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+
+/* ══════════ CIERRE ══════════ */
+#cierre{padding-bottom:96px}
+.bye{
+  font-family:'Yellowtail',cursive;
+  font-size:clamp(46px,13vw,78px);color:var(--hot);line-height:1.05;
+}
+.bye-sub{
+  font-size:11px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ink);opacity:.55;margin-top:14px;
+}
+.checker{
+  position:absolute;bottom:0;left:0;width:100%;height:34px;z-index:4;
+  background:repeating-conic-gradient(var(--ink) 0 25%,transparent 0 50%) 0 0/34px 34px;
+  opacity:.9;
+}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ══════════ MÚSICA ══════════ */
+#yt{position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;border:0;left:-9999px}
+#mbtn{
+  position:fixed;bottom:20px;right:20px;z-index:900;
+  width:56px;height:56px;border-radius:50%;
+  background:var(--hot);color:var(--white);
+  border:2.5px solid var(--ink);
+  box-shadow:3px 4px 0 var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:21px;line-height:1;
+  transition:transform .12s ease,box-shadow .12s ease;
+}
+#mbtn:active{transform:translate(3px,4px);box-shadow:0 0 0 var(--ink)}
+#mbtn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+#mbtn.on{animation:beat 1.4s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@media(max-width:520px){#mbtn{width:50px;height:50px;bottom:16px;right:16px;font-size:19px}}
+
+/* ══════════ IMÁGENES ══════════ */
+.sticker{
+  width:min(230px,60vw);
+  margin:6px auto 2px;
+  display:block;
+}
+.sticker-mid{ width:min(190px,52vw); margin:10px auto 18px; transform:rotate(-3deg) }
+.sticker-end{ width:min(210px,56vw); margin:4px auto 20px; transform:rotate(2deg) }
+</style>
+</head>
+<body>
+<div class="paper">
+
+<!-- ══════════ PORTADA ══════════ -->
+<section id="hero">
+  <svg class="deco" style="top:7%;right:6%;width:52px" viewBox="0 0 64 76" aria-hidden="true">
+    <path d="M32 22C28 8 4 8 4 26c0 16 20 26 28 34 8-8 28-18 28-34 0-18-24-18-28-4Z" fill="#FF1E8E"/>
+    <path d="M18 52c0 7-3 8-3 13s6 6 6 0-2-7-3-13Z" fill="#FF1E8E"/>
+  </svg>
+  <svg class="deco" style="top:19%;left:5%;width:38px" viewBox="0 0 64 76" aria-hidden="true">
+    <path d="M32 22C28 8 4 8 4 26c0 16 20 26 28 34 8-8 28-18 28-34 0-18-24-18-28-4Z" fill="#0D0D0D"/>
+    <path d="M44 50c0 8-3 9-3 14s6 6 6 0-2-8-3-14Z" fill="#0D0D0D"/>
+  </svg>
+  <svg class="deco spark" style="bottom:22%;left:9%;width:22px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 3 11 12 12-9 1-11 4-12 12-1-8-3-11-12-12 9-1 11-4 12-12Z" fill="currentColor"/></svg>
+  <svg class="deco spark" style="top:14%;right:26%;width:15px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 3 11 12 12-9 1-11 4-12 12-1-8-3-11-12-12 9-1 11-4 12-12Z" fill="currentColor"/></svg>
+  <svg class="deco spark" style="bottom:30%;right:11%;width:18px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 3 11 12 12-9 1-11 4-12 12-1-8-3-11-12-12 9-1 11-4 12-12Z" fill="currentColor"/></svg>
+
+  <div class="badge">
+    <div class="callme">Call<br>Me</div>
+
+    <!-- ══ TU IMAGEN ══
+         Poné el archivo junto al index.html y llamalo art.png
+         (PNG con fondo transparente). Se muestra sola.
+         Si no existe, se ve el dibujo de abajo. ══ -->
+    <img id="art" src="art.png" alt="" style="width:100%;display:none">
+
+    <svg id="art-svg" viewBox="0 0 200 190" aria-label="Corazón con máscara">
+      <path d="M100 56C88 22 12 24 12 72c0 44 66 74 88 102 22-28 88-58 88-102 0-48-76-50-88-16Z" fill="#FF1E8E" stroke="#0D0D0D" stroke-width="5"/>
+      <path d="M100 68C92 44 40 46 40 78c0 32 46 54 60 74 14-20 60-42 60-74 0-32-52-34-60-10Z" fill="#0D0D0D"/>
+      <path d="M103 74c-19 0-31 15-31 36 0 20 10 33 18 42 5 6 9 10 13 10s8-4 13-10c8-9 18-22 18-42 0-21-12-36-31-36Z"
+            fill="#F7F7F7" stroke="#E2E2E2" stroke-width="1.5"/>
+      <path d="M88 96c5-3 10-2 12 2 2 4 0 10-4 13s-9 2-11-2c-2-5 0-10 3-13Z" fill="#0D0D0D"/>
+      <path d="M118 96c-5-3-10-2-12 2-2 4 0 10 4 13s9 2 11-2c2-5 0-10-3-13Z" fill="#0D0D0D"/>
+      <path d="M103 121c4 0 7 4 7 11s-3 15-7 15-7-8-7-15 3-11 7-11Z" fill="#0D0D0D"/>
+      <rect x="138" y="96" width="19" height="32" rx="4" fill="#FF9CC8" stroke="#0D0D0D" stroke-width="3"/>
+      <rect x="142" y="101" width="11" height="14" rx="2" fill="#FFF"/>
+    </svg>
+  </div>
+
+  <div class="title-stack">
+    <div class="num26">26</div>
+    <div class="mi-cumple">Mi Cumpleaños</div>
+  </div>
+
+  <div class="who" id="nombre">Mili</div>
+  <div class="hero-when">Sábado 5 de septiembre · 22:30</div>
+</section>
+
+<!-- ══════════ CUENTA REGRESIVA ══════════ -->
+<section id="falta" class="rv">
+  <div class="eyebrow">Falta poco</div>
+  <h2 class="h-sec"><span class="hl">Cuenta regresiva</span></h2>
+  <div class="count" id="count" aria-live="polite">
+    <div class="cbox"><div class="cnum" id="d">--</div><div class="clab">días</div></div>
+    <div class="cbox"><div class="cnum" id="h">--</div><div class="clab">horas</div></div>
+    <div class="cbox"><div class="cnum" id="m">--</div><div class="clab">min</div></div>
+    <div class="cbox"><div class="cnum" id="s">--</div><div class="clab">seg</div></div>
+  </div>
+</section>
+
+<!-- ══════════ CUÁNDO Y DÓNDE ══════════ -->
+<section id="donde" class="rv">
+  <svg class="deco spark" style="top:8%;right:8%;width:19px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 3 11 12 12-9 1-11 4-12 12-1-8-3-11-12-12 9-1 11-4 12-12Z" fill="currentColor"/></svg>
+  <div class="eyebrow">Anotá</div>
+  <h2 class="h-sec"><span class="hl">Cuándo y dónde</span></h2>
+
+  <div class="card">
+    <span class="card-ico">📆</span>
+    <div class="card-lab">Fecha y hora</div>
+    <div class="card-val">Sábado 05/09<br>22:30 hs</div>
+  </div>
+
+  <div class="card">
+    <span class="card-ico">📍</span>
+    <div class="card-lab">Dirección</div>
+    <div class="card-val">Alsina 1257</div>
+    <div class="card-note">Santiago del Estero</div>
+  </div>
+
+  <div class="map-frame">
+    <iframe
+      src="https://www.google.com/maps?q=Alsina+1257,+Santiago+del+Estero,+Argentina&hl=es&z=17&output=embed"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Mapa de Alsina 1257"></iframe>
+  </div>
+
+  <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Alsina+1257,+Santiago+del+Estero" target="_blank" rel="noopener">
+    🗺️ Cómo llegar
+  </a>
+</section>
+
+<!-- ══════════ IMAGEN 2 ══════════ -->
+<section id="art-mid" class="rv" style="padding-top:20px;padding-bottom:20px">
+  <!-- archivo: art2.png -->
+  <img class="sticker sticker-mid" id="art2" src="art2.png" alt="" style="display:none">
+</section>
+
+<!-- ══════════ DRESS CODE ══════════ -->
+<section id="dress" class="rv">
+  <svg class="deco" style="top:10%;left:7%;width:34px" viewBox="0 0 64 76" aria-hidden="true">
+    <path d="M32 22C28 8 4 8 4 26c0 16 20 26 28 34 8-8 28-18 28-34 0-18-24-18-28-4Z" fill="#FF1E8E"/>
+    <path d="M20 52c0 7-3 8-3 13s6 6 6 0-2-7-3-13Z" fill="#FF1E8E"/>
+  </svg>
+  <div class="eyebrow">Obligatorio</div>
+  <h2 class="h-sec"><span class="hl">Dress code</span></h2>
+
+  <div class="card">
+    <div class="swatch"></div>
+    <div class="card-lab">El color de la noche</div>
+    <div class="card-val">Rosa</div>
+    <div class="card-note">Venís de rosa: puede ser toda la ropa o un solo accesorio. Con eso alcanza.</div>
+  </div>
+</section>
+
+<!-- ══════════ LLAMADA / RSVP ══════════ -->
+<section id="llamada" class="rv">
+  <div class="eyebrow">Última cosa</div>
+  <h2 class="h-sec"><span class="hl">Atendé</span></h2>
+
+  <div class="phone">
+    <div class="ring-lab">Llamada entrante</div>
+    <div class="avatar">
+      <svg width="42" height="42" viewBox="0 0 60 76" aria-hidden="true">
+        <path d="M30 6C13 6 3 19 3 37c0 17 9 28 15 36 4 5 8 9 12 9s8-4 12-9c6-8 15-19 15-36C57 19 47 6 30 6Z" fill="#F7F7F7"/>
+        <path d="M17 26c4-2 8-1 10 2 2 4 0 9-3 11s-8 2-10-2c-2-4 0-9 3-11Z" fill="#0D0D0D"/>
+        <path d="M43 26c-4-2-8-1-10 2-2 4 0 9 3 11s8 2 10-2c2-4 0-9-3-11Z" fill="#0D0D0D"/>
+        <path d="M30 48c3 0 6 4 6 10s-3 13-6 13-6-7-6-13 3-10 6-10Z" fill="#0D0D0D"/>
+      </svg>
+    </div>
+    <div class="ring-name">Mili</div>
+    <div class="ring-sub">móvil · ahora</div>
+    <a class="answer" id="rsvp" href="#" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .7-.2 1l-2.3 2.2Z"/></svg>
+      Confirmar asistencia
+    </a>
+  </div>
+  <div class="card-note" style="max-width:320px">Avisame antes del 29 de agosto así organizo todo.</div>
+</section>
+
+<!-- ══════════ CIERRE ══════════ -->
+<section id="cierre" class="rv">
+  <svg class="deco spark" style="top:12%;left:14%;width:20px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 3 11 12 12-9 1-11 4-12 12-1-8-3-11-12-12 9-1 11-4 12-12Z" fill="currentColor"/></svg>
+  <svg class="deco spark" style="top:24%;right:16%;width:14px" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 8 3 11 12 12-9 1-11 4-12 12-1-8-3-11-12-12 9-1 11-4 12-12Z" fill="currentColor"/></svg>
+  <!-- archivo: art3.png -->
+  <img class="sticker sticker-end" id="art3" src="art3.png" alt="" style="display:none">
+  <div class="bye">Te espero</div>
+  <div class="bye-sub">26 · 05.09.2026</div>
+  <div class="checker"></div>
+</section>
+
+</div>
+
+<iframe id="yt" title="Música" allow="autoplay"></iframe>
+<button id="mbtn" aria-label="Reproducir música" aria-pressed="false">♪</button>
+
+<script>
+/* ═══ EDITAR ACÁ ═══ */
+var WHATSAPP = '5493856282107';
+var MENSAJE  = 'Hola! Confirmo que voy a tu cumple 🩷';
+var FECHA    = '2026-09-05T22:30:00-03:00';
+/* ══════════════════ */
+
+document.getElementById('rsvp').href =
+  'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(MENSAJE);
+
+var meta = new Date(FECHA).getTime();
+var el = {d:document.getElementById('d'),h:document.getElementById('h'),
+          m:document.getElementById('m'),s:document.getElementById('s')};
+function pad(n){return n<10?'0'+n:''+n}
+function tick(){
+  var t = meta - Date.now();
+  if(t<=0){
+    document.getElementById('count').innerHTML =
+      '<div class="card-val" style="color:var(--hot)">¡Hoy es la fiesta!</div>';
+    return;
+  }
+  var s=Math.floor(t/1000);
+  el.d.textContent = pad(Math.floor(s/86400));
+  el.h.textContent = pad(Math.floor(s%86400/3600));
+  el.m.textContent = pad(Math.floor(s%3600/60));
+  el.s.textContent = pad(s%60);
+  setTimeout(tick,1000);
+}
+tick();
+
+
+
+/* ── si existe art.png, se usa en vez del dibujo ── */
+(function(){
+  // portada: si carga art.png, reemplaza al dibujo
+  var img = document.getElementById('art'), svg = document.getElementById('art-svg');
+  img.onload  = function(){ img.style.display='block'; svg.style.display='none'; };
+  img.onerror = function(){ img.remove(); };
+
+  // intermedia y final: aparecen sólo si el archivo existe
+  ['art2','art3'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.onload  = function(){ el.style.display='block'; };
+    el.onerror = function(){ var s = el.closest('#art-mid'); (s || el).remove(); };
+  });
+})();
+
+/* ── música ── */
+var VIDEO = 'U3PUjIy6X_Q';
+var sonando = false;
+var mbtn = document.getElementById('mbtn'), yt = document.getElementById('yt');
+mbtn.addEventListener('click', function(){
+  sonando = !sonando;
+  if(sonando){
+    yt.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO +
+             '?autoplay=1&loop=1&playlist=' + VIDEO + '&controls=0&rel=0&modestbranding=1';
+    mbtn.textContent = '❙❙';
+    mbtn.classList.add('on');
+    mbtn.setAttribute('aria-label','Pausar música');
+    mbtn.setAttribute('aria-pressed','true');
+  } else {
+    yt.src = '';
+    mbtn.textContent = '♪';
+    mbtn.classList.remove('on');
+    mbtn.setAttribute('aria-label','Reproducir música');
+    mbtn.setAttribute('aria-pressed','false');
+  }
+});
+
+var obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }
+  });
+},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(n){ obs.observe(n); });
+</script>
+</body>
+</html>
